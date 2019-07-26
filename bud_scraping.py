@@ -83,8 +83,12 @@ password.clear()
 password.send_keys(pas)
 login = driver.find_element_by_id('login')
 login.click()
-accept_cookies = wait.until(ec.visibility_of_element_located((By.XPATH, "//a[@class='optanon-allow-all']")))
-accept_cookies.click()
+try:
+    accept_cookies = wait.until(ec.visibility_of_element_located((By.XPATH, "//a[@class='optanon-allow-all']")))
+    accept_cookies.click()
+except:
+    print('Login failed!')
+    exit()
 #time.sleep(5)
 cookies = driver.get_cookies()
 storage = LocalStorage(driver)
@@ -120,7 +124,7 @@ for id in df['id']:
         response = s.get("https://live-portfolio-learning-api.bud.co.uk/learningplan/"+id+"/activity/"+activity_id, headers=headers)
         data = response.json()
         for i in data['submissions']:
-            if i['status'] == 3: # 0: no file , 2: marked as incomplete, 3: marked as complete
+            if (i['status'] == 3): # 0: no file , 2: marked as incomplete, 3: marked as complete
                 submissionDate = i['submissionDate']
                 fileName = find_evidence_form(i['files']) # search through files for evidence form in case of multiple file submission.
                 activities_df.loc[len(activities_df)] = [activity_id, activity_name, submissionDate, fileName]
