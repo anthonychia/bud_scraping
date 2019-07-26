@@ -1,3 +1,4 @@
+import getpass
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -66,8 +67,8 @@ class LocalStorage:
 
 
 url='https://web.bud.co.uk/'
-user = input('username: ')
-pas = input('password: ')
+user = input('Bud username: ')
+pas = getpass.getpass('Bud password: ')
 chrome_options = Options()
 chrome_options.add_argument("--headless")
 driver = webdriver.Chrome('../chromedriver', options=chrome_options)
