@@ -5,7 +5,7 @@ block_cipher = None
 
 a = Analysis(['bud_scraping.py'],
              pathex=['/Users/chung.chia/bud_scraping'],
-             binaries=[('/Users/chung.chia/chromedriver','.')],
+             binaries=[['/Users/chung.chia/bud_scraping/chromedriver','.']],
              datas=[],
              hiddenimports=[],
              hookspath=[],

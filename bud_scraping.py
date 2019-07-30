@@ -10,6 +10,7 @@ import pprint
 import requests
 import time
 import json
+import os, sys, inspect    
 
 class LocalStorage:
     def __init__(self, driver) :
@@ -66,12 +67,27 @@ class LocalStorage:
         return self.items().__str__()
 
 
+if getattr(sys, 'frozen', False):
+    application_path = os.path.dirname(sys.executable)
+elif __file__:
+    application_path = os.path.dirname(__file__)
+
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
+
+chromedriver_path = resource_path("chromedriver")
+chrome_options = Options()
+chrome_options.add_argument("--headless")
+driver = webdriver.Chrome(chromedriver_path, options=chrome_options)
 url='https://web.bud.co.uk/'
 user = input('Bud username: ')
 pas = getpass.getpass('Bud password: ')
-chrome_options = Options()
-chrome_options.add_argument("--headless")
-driver = webdriver.Chrome('../chromedriver', options=chrome_options)
 driver.get(url)
 wait = WebDriverWait(driver, 10)
 username = wait.until(ec.visibility_of_element_located((By.NAME, "username")))
@@ -143,7 +159,8 @@ monthly_counts = monthly_counts[sorted(monthly_counts.columns)]
 df = df.set_index('id').join(monthly_counts.set_index('id'))
 df = df.drop(['activityStats', 'alertCounts', 'apprenticeId', 'employer', 'learner', 'programme', 'status'], axis=1)
 print(df.head())
-df.to_csv('tracker.csv')
+print(os.path.join(application_path,"tracker.csv"))
+df.to_csv(os.path.join(application_path,"tracker.csv"))
     
 #https://live-portfolio-learning-api.bud.co.uk/stats/summaries
 #https://live-application-api.bud.co.uk/stats/summaries
