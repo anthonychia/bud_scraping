@@ -83,7 +83,7 @@ def resource_path(relative_path):
 
 chromedriver_path = resource_path("chromedriver")
 chrome_options = Options()
-chrome_options.add_argument("--headless")
+#chrome_options.add_argument("--headless")
 driver = webdriver.Chrome(chromedriver_path, options=chrome_options)
 url='https://web.bud.co.uk/'
 user = input('Bud username: ')
@@ -119,11 +119,17 @@ s = requests.Session()
 for cookie in cookies:
     s.cookies.set(cookie['name'], cookie['value'])
 headers = {"accept":"application/json","authorization":"Bearer "+access_token["access_token"],"cache-control":"no-cache","content-type":"application/json","pragma":"no-cache"}
-response = s.get("https://live-portfolio-learning-api.bud.co.uk/learningplan/currentlylearning", headers = headers,)
+#response = s.get("https://live-portfolio-learning-api.bud.co.uk/learningplan/currentlylearning", headers = headers)
+response = s.get("https://live-account-api.bud.co.uk/account/profile", headers=headers)
 data = response.json()
+account_id = data['id']
 
-df = pd.DataFrame(data)
-df['name'] = df['learner'].apply(lambda x: x['fullName'])
+response = s.post("https://live-portfolio-learning-api.bud.co.uk/stats/summaries", headers=headers, data='["%s"]'%(account_id))
+data = response.json()
+fullname = [i['learner']['foreName']+' '+i['learner']['surname'] for i in data[account_id]]
+id = [i['id'] for i in data[account_id]]
+#df['name'] = df['learner'].apply(lambda x: x['fullName'])
+df = pd.DataFrame({'fullName':fullname, 'id':id})
 
 def find_evidence_form(files):
     for file in files:
@@ -131,7 +137,7 @@ def find_evidence_form(files):
             return file['fileName']
 
 monthly_counts = pd.DataFrame()
-for id in df['id'][:3]:
+for id in df['id']:
     response = s.get("https://live-portfolio-learning-api.bud.co.uk/learningplan/"+id, headers=headers)
     data = response.json()
     activities_df = pd.DataFrame(columns=['id','name','date','filename'])
@@ -148,6 +154,7 @@ for id in df['id'][:3]:
     if not activities_df.empty:
         activities_df.loc[activities_df['name'].str.lower().str.contains('call'),'type'] = 'Call'
         activities_df.loc[activities_df['name'].str.lower().str.contains('workshop|practice', regex=True),'type'] = 'Bud'
+        activities_df.loc[activities_df['name'].str.lower().str.contains('project', regex=True),'type'] = 'Project'
         single_count = activities_df.groupby(['month','type']).size().to_frame().transpose()
     else:
         single_count = pd.DataFrame()
@@ -157,7 +164,9 @@ for id in df['id'][:3]:
 
 monthly_counts = monthly_counts[sorted(monthly_counts.columns)]
 df = df.set_index('id').join(monthly_counts.set_index('id'))
-df = df.drop(['activityStats', 'alertCounts', 'apprenticeId', 'employer', 'learner', 'programme', 'status'], axis=1)
+df = df.sort_values(by='fullName')
+#df = df.drop(['activityStats', 'alertCounts', 'apprenticeId', 'employer', 'learner', 'programme', 'status'], axis=1)
+
 print(df.head())
 print(os.path.join(application_path,"tracker.csv"))
 df.to_csv(os.path.join(application_path,"tracker.csv"))
