@@ -83,7 +83,7 @@ def resource_path(relative_path):
 
 chromedriver_path = resource_path("chromedriver")
 chrome_options = Options()
-#chrome_options.add_argument("--headless")
+chrome_options.add_argument("--headless")
 driver = webdriver.Chrome(chromedriver_path, options=chrome_options)
 url='https://web.bud.co.uk/'
 user = input('Bud username: ')
