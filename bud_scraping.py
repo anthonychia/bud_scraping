@@ -12,6 +12,9 @@ import time
 import json
 import os, sys, inspect    
 
+'''
+Create class to get all local storage
+'''
 class LocalStorage:
     def __init__(self, driver) :
         self.driver = driver
