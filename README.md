@@ -1,8 +1,9 @@
 # Bud Scraping via Selenium
 
-### Main script: 
+### Main scripts: 
 
 `bud_scraping.py` 
+`bud_reminder.py` 
 
 ### Requirements: 
 
