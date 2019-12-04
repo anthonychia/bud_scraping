@@ -86,6 +86,7 @@ def resource_path(relative_path):
         base_path = os.path.abspath(".")
     return os.path.join(base_path, relative_path)
 
+#Getting login details and logging in through login page via selenium automation
 chromedriver_path = resource_path("chromedriver")
 chrome_options = Options()
 chrome_options.add_argument("--headless")
@@ -110,16 +111,17 @@ try:
 except:
     print('Login failed!')
     exit()
-#time.sleep(5)
+
+#Obtaining cookies after logged in
 cookies = driver.get_cookies()
 storage = LocalStorage(driver)
+
+#Obtaining Bearer access token from local storage in Chrome browser
 access_token = json.loads(storage.get('bud.user:https://auth.bud.co.uk/:bud'))
 #print(access_token['access_token'])
 driver.quit()
 
-#for i in cookies:
-#    print(i)
-
+#GET REQUESTS and saving responses 
 s = requests.Session()
 for cookie in cookies:
     s.cookies.set(cookie['name'], cookie['value'])
@@ -157,7 +159,7 @@ print(selected_cohorts)
 
 df = df[df['programmeName'].isin(selected_cohorts)]
 
-days=10
+days=60
     
 for id in df['id']:
     response = s.get("https://live-portfolio-learning-api.bud.co.uk/learningplan/"+id, headers=headers)

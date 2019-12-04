@@ -1,0 +1,8 @@
+Hi %s,
+
+I have been reviewing your activity completion recently, and I realised that this activity has been overdue for %i days. Please can you complete this activity by submitting the evidence form? The evidence form template can be found in the Activity Details tab. For compliance purpose, it is essential that all activities assigned to you are completed in due course.
+
+I will be reviewing this again in a week. Thank you.
+
+Best regards,
+%s

@@ -159,7 +159,7 @@ print(selected_cohorts)
 
 df = df[df['programmeName'].isin(selected_cohorts)]
 
-days=10
+days=60
     
 for id in df['id']:
     response = s.get("https://live-portfolio-learning-api.bud.co.uk/learningplan/"+id, headers=headers)
