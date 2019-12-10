@@ -1,10 +1,9 @@
-fArom bud import *A
+from bud import *
 import pandas as pd
 import numpy as np
 import time
 import os, sys, inspect    
 import datetime as dt
-
 
 def load_savefile(filename):
     if os.path.isfile(filename):
@@ -12,7 +11,6 @@ def load_savefile(filename):
     else:
         return pd.DataFrame(columns=['id','reminderDate'])
     
-
 if __name__ == '__main__':
     #Start a Bud session and getting necessary access token
     bud_session = Bud()
@@ -66,7 +64,4 @@ if __name__ == '__main__':
             bud_session.send_message(learner_id, activity_id, message)
             time.sleep(1+np.random.rand())
 
-    #Remove save file if process is complete
-    os.remove('reminderList.csv')
     bud_session.quit()
-B
