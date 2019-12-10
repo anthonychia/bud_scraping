@@ -2,9 +2,11 @@
 
 ### Main scripts: 
 
-`bud_scraping.py` 
+`bud_scraping.py` - Scraping learner's data from Bud
 
-`bud_reminder.py` 
+`bud_reminder.py` - Sending reminders for overdue activities
+
+`bud_alerts.py` (WIP) - Connecting Bud with Slack API
 
 ### Requirements: 
 
