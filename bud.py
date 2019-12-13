@@ -150,6 +150,9 @@ class Bud:
     def get_active_learners(self):
         return self.s.get("https://live-learnermanagement-api.bud.co.uk/learner-management/active"+"?pageSize=1000&statuses=1", headers=self.headers).json()
 
+    def get_learning_plans(self, trainer_id):
+        return self.s.post("https://live-portfolio-learning-api.bud.co.uk/stats/summaries", headers=self.headers, data=trainer_id).json()
+
     def get_learning_plan(self, learner_id):
         return self.s.get("https://live-portfolio-learning-api.bud.co.uk/learningplan/"+learner_id, headers=self.headers).json()
     

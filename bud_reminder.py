@@ -1,4 +1,4 @@
-fArom bud import *A
+from bud import *
 import pandas as pd
 import numpy as np
 import time
@@ -70,3 +70,4 @@ if __name__ == '__main__':
     os.remove('reminderList.csv')
     bud_session.quit()
 B
+OB
