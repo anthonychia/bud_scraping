@@ -1,8 +1,7 @@
 Hi %s,
 
-I have been reviewing your activity completion recently, and I realised that this activity has been overdue for %i days. Please can you complete this activity by submitting the evidence form? The evidence form template can be found in the Activity Details tab. It is essential that all activities assigned to you are completed in due course.
+I have reviewed your activity completion status, and I have noticed that this activity and has been overdue for %i days. Please can you complete this activity by submitting the relevant evidence form. The evidence form template can be found in the Activity Details tab. It is essential that all activities assigned to you are completed within the specified deadline. Completing these activities are imperative to your completion of the programme. 
+I will be reviewing your status again in 2 weeks time, if you can please complete this task as a priority in the coming week. Please remember these activities are great learning opportunities to help increase your skill level on each topic, and also assess any challenges you may be facing with the content. If you have any further questions regarding the content please reach out, I am happy to help. 
 
-I will be reviewing this again in 2 weeks. Thank you.
-
-Best regards,
+Thank you.
 %s

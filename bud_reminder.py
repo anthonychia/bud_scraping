@@ -69,5 +69,3 @@ if __name__ == '__main__':
     #Remove save file if process is complete
     os.remove('reminderList.csv')
     bud_session.quit()
-B
-OB

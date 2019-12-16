@@ -163,7 +163,7 @@ class Bud:
         self.textarea = self.driver.find_element_by_xpath("//textarea")
         self.textarea.send_keys(message)
         self.submit_button = self.driver.find_element_by_xpath("//button[@type='submit']")
-        #self.submit_button.click()    
+        self.submit_button.click()    
 
     def quit(self):
         self.driver.quit()
