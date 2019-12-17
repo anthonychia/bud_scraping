@@ -1,7 +1,7 @@
 # Bud Scraping via Selenium
 
 ### Module:
-*bud.py* contains main class `Bud()` which can be used to facilitate automations on [Bud learning platform](https://web.bud.co.uk/).
+**bud.py** contains main class `Bud()` which can be used to facilitate automations on [Bud learning platform](https://web.bud.co.uk/).
 
 To start using this module, you can simply import it into your Python script by including this line of code at the start:
 
@@ -11,20 +11,21 @@ from bud import *
 
 ### Example scripts: 
 
-*bud_scraping.py* - Scraping learner's data from Bud
+**bud_scraping.py** - Scraping learner's data from Bud
 
-*bud_reminder.py* - Sending reminders for overdue activities
+**bud_reminder.py** - Sending reminders for overdue activities
 
-*bud_alerts.py* (WIP) - Connecting Bud with Slack API
+**bud_alerts.py** *(WIP)* - Connecting Bud with Slack API
 
-*bud_reviews.py* (WIP) - Getting progress reviews data for all learners
+**bud_reviews.py** *(WIP)* - Getting progress reviews data for all learners
 
-*bud_activities.py* (WIP) - Gathering all information on activities 
+**bud_activities.py** *(WIP)* - Gathering all information on activities 
 
 
 ### Requirements:
 
 1. Install required Python packages:
+
 ...Selenium - `pip install selenium`
 
 2. Download `chromedriver` and put that into the same folder as `bud.py`. Chromedriver can be downloaded from this repo or it can be downloaded from [here](https://chromedriver.chromium.org/downloads)
