@@ -26,6 +26,6 @@ from bud import *
 
 1. Install required Python packages:
 
-...Selenium - `pip install selenium`
+>Selenium - `pip install selenium`
 
 2. Download `chromedriver` and put that into the same folder as `bud.py`. Chromedriver can be downloaded from this repo or it can be downloaded from [here](https://chromedriver.chromium.org/downloads)
