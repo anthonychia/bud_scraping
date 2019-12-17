@@ -145,16 +145,28 @@ class Bud:
             self.s.cookies.set(cookie['name'], cookie['value'])
     
     def get_account_info(self):
+        #This will retrieve login account information (trainer, general admin, etc..)
         return self.s.get("https://live-account-api.bud.co.uk/account/profile", headers=self.headers).json()
 
     def get_active_learners(self):
+        #This will retrieve all active learners (current status = 1)
         return self.s.get("https://live-learnermanagement-api.bud.co.uk/learner-management/active"+"?pageSize=1000&statuses=1", headers=self.headers).json()
 
     def get_learning_plans(self, trainer_id):
+        #This will retrieve all learning plans for a specific trainer/mentor.
         return self.s.post("https://live-portfolio-learning-api.bud.co.uk/stats/summaries", headers=self.headers, data=trainer_id).json()
 
     def get_learning_plan(self, learner_id):
+        #This will retrieve all activities for a specific learning plan.
         return self.s.get("https://live-portfolio-learning-api.bud.co.uk/learningplan/"+learner_id, headers=self.headers).json()
+
+    def get_activity_info(self, learner_id, activity_id):
+        #This will retrieve messages and submissions with a specific activity
+        return self.s.get("https://live-portfolio-learning-api.bud.co.uk/learningplan/"+learner_id+"/activity/"+activity_id, headers=self.headers).json()
+
+    def get_reviews(self, learner_id):
+        #This will retrieve progress reviews for a specific learning plan.
+        return self.s.get("https://live-portfolio-learning-api.bud.co.uk/progress-review/all/"+learner_id, headers=self.headers).json()
     
     def send_message(self, learner_id, activity_id, message):
         self.driver.get("https://web.bud.co.uk/learningportal/assessor/plan/"+learner_id+"/activity/"+activity_id+"/submissions/")
