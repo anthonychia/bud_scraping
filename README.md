@@ -1,7 +1,13 @@
 # Bud Scraping via Selenium
 
 ### Module:
-`bud.py` contains ```Bud()``` class which can be used to facilitate automations on [Bud learning platform](https://web.bud.co.uk/). 
+`bud.py` contains `Bud()` class which can be used to facilitate automations on [Bud learning platform](https://web.bud.co.uk/).
+
+To start using this module, you can simply import it into your Python script:
+
+```python
+from bud import *
+```
 
 ### Example scripts: 
 
