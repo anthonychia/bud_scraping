@@ -161,12 +161,19 @@ class Bud:
         return self.s.get("https://live-portfolio-learning-api.bud.co.uk/learningplan/"+learner_id, headers=self.headers).json()
 
     def get_activity_info(self, learner_id, activity_id):
-        #This will retrieve messages and submissions with a specific activity
+        #This will retrieve messages and submissions for a specific activity
         return self.s.get("https://live-portfolio-learning-api.bud.co.uk/learningplan/"+learner_id+"/activity/"+activity_id, headers=self.headers).json()
 
     def get_reviews(self, learner_id):
         #This will retrieve progress reviews for a specific learning plan.
         return self.s.get("https://live-portfolio-learning-api.bud.co.uk/progress-review/all/"+learner_id, headers=self.headers).json()
+
+    def get_notifications(self):
+        #This will receive current user's notifications which are essentially all messages current user received to date.
+        return self.s.get("https://live-notifications-api.bud.co.uk/notification", headers=self.headers).json()
+
+    def get(self, url):
+        return self.s.get(url, headers=self.headers)
     
     def send_message(self, learner_id, activity_id, message):
         self.driver.get("https://web.bud.co.uk/learningportal/assessor/plan/"+learner_id+"/activity/"+activity_id+"/submissions/")

@@ -33,4 +33,4 @@ for learner_id in learner_list['id']:
     activities_df = activities_df.append(df)
 
 activities_df = learner_list.merge(activities_df, how='left', left_on='id', right_on='learner_plan_id')
-activities_df.to_csv('activities_list.csv', index=False)
+activities_df.to_csv(dt.datetime.today().strftime(format="%Y%m%d")+'activities_list.csv', index=False)
