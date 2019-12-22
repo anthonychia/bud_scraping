@@ -15,7 +15,7 @@ from bud import *
 
 **bud_reminder.py** - Sending reminders for overdue activities
 
-**bud_alerts.py** *(WIP)* - Connecting Bud with Slack API
+**bud_notifications.py** *(WIP)* - Connecting Bud with Slack API
 
 **bud_reviews.py** *(WIP)* - Getting progress reviews data for all learners
 
