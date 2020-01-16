@@ -50,7 +50,7 @@ if __name__ == '__main__':
         #Looping through all activities
         for activity_id, activity_name, due_date in activities:
             #Ignore project, hackathon and data science in a day
-            ignore_list = ['project', 'hackathon:', 'hackathon', 'science']
+            ignore_list = ['project', 'hackathon:', 'hackathon', 'science', 'review']
             if any(x in activity_name.lower() for x in ignore_list): 
                 continue
             

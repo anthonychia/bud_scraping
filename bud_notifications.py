@@ -52,8 +52,8 @@ client = slack.WebClient(slack_token)
 
 #Send message via Slack
 channel = client.conversations_open(users='UK6UQECMS')
-client.chat_postMessage(channel=channel['channel']['id'],
-                        text=slack_message)
+#client.chat_postMessage(channel=channel['channel']['id'],
+#                        text=slack_message)
 
 #Look for Bud channel
 #bud_channel=None

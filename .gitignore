@@ -1,0 +1,4 @@
+# ignore all csv
+*.csv
+**/data_dump
+*~
