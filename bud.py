@@ -186,3 +186,6 @@ class Bud:
 
     def quit(self):
         self.driver.quit()
+
+    def get(self):
+        self.driver.get()
