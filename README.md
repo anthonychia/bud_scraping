@@ -19,8 +19,9 @@ from bud import *
 
 **bud_reviews.py** *(WIP)* - Getting progress reviews data for all learners
 
-**bud_activities.py** *(WIP)* - Gathering all information on activities 
+**bud_activities.py** - Gathering all information on activities 
 
+**auto_review_reminder.py** - Automated learning review signature reminders
 
 ### Requirements:
 
