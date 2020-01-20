@@ -11,17 +11,17 @@ from bud import *
 
 ### Example scripts: 
 
-**bud_scraping.py** - Scraping learner's data from Bud
+1. **bud_scraping.py** - Scraping learner's data from Bud
 
-**bud_reminder.py** - Sending reminders for overdue activities
+2. **bud_reminder.py** - Sending reminders for overdue activities
 
-**bud_notifications.py** *(WIP)* - Connecting Bud with Slack API
+3. **bud_notifications.py** *(WIP)* - Connecting Bud with Slack API
 
-**bud_reviews.py** *(WIP)* - Getting progress reviews data for all learners
+4. **bud_reviews.py** *(WIP)* - Getting progress reviews data for all learners
 
-**bud_activities.py** - Gathering all information on activities 
+5. **bud_activities.py** - Gathering all information on activities 
 
-**auto_review_reminder.py** - Automated learning review signature reminders
+6. **auto_review_reminder.py** - Automated learning review signature reminders
 
 ### Requirements:
 
