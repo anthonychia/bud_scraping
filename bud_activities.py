@@ -26,11 +26,13 @@ learner_list = pd.DataFrame.from_dict(data['items'], orient='columns')
 
 activities_df = pd.DataFrame()
 
-for learner_id in learner_list['id']:
+for index, learner_id in enumerate(learner_list['id']):
     data = bud_session.get_learning_plan(learner_id)
     df = pd.DataFrame.from_dict(data['activities'], orient='columns')
     df['learner_plan_id'] = learner_id
     activities_df = activities_df.append(df)
+    print(f'Loading data... {index+1}/{len(learner_list["id"])} [{(int(index/10))*"="}>{int((len(learner_list["id"])-index-1)/10)*"."}]', end='\r')
+
 
 activities_df = learner_list.merge(activities_df, how='left', left_on='id', right_on='learner_plan_id')
 activities_df.to_csv(dt.datetime.today().strftime(format="%Y%m%d")+'activities_list.csv', index=False)
